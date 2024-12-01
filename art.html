@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>art-portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>    <!-- <meta http-equiv="Content-Security-Policy" content="img-src 'self';"> -->
+</head>
+<body>
+  <div id="lightbox-bg"> 
+    <div class="lightbox-content box">
+      <button class="delete is-large" onclick="$('#lightbox-bg').fadeOut()"></button> 
+      <figure class="image watermarked is-centered">
+        <img 
+        id="image-content"
+        src="./img/placeholder.gif"
+        alt="Placeholder Image. Sonic shrugging."
+        >
+        
+        <h2 id="lightbox-title" class="title is-2">Title</h2>
+        <p id="lightbox-description" class="subtitle">Subtitle</p>
+        <p><small>Do not copy.</small></p>
+      </figure>         
+      
+        
+    </div> 
+  </div>
+  <section class="hero is-info">
+      <div class="hero-body">
+        <p class="title">Lighthouse System</p>
+        <p class="subtitle">Art</p>
+      </div>
+    </section>
+    <section>
+      <nav class="navbar" role="navigation" aria-label="main navigation">    
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <a class="navbar-item" href="index.html">
+                Index
+              </a>
+                <a class="navbar-item" href="art.html">
+                    Art
+                </a>
+                <a class="navbar-item" href="about.html">
+                    About Me
+                </a>
+            </div>
+        </div>
+    </nav>
+    </section>
+    <main class="content">
+      <section>
+        <h1 class="title is-1">Gallery</h1>
+        <div class="content">
+          <p>Some art may be signed as "Dee Deyes", an online moniker.</p>
+        </div>
+        <div id="gallery">
+          <div>
+            <h2>Fan Art</h2>
+            <div class="gallerygrid">
+              <div class="item">
+                <img 
+                    src="./img/fanart/plasticbeach.jpg" 
+                    alt="Traditional drawing of Plastic Beach on fire"
+                    data-title="Crashing Down"
+                    data-description="Plastic Beach from Gorillaz engulfed in flames. Gel pens on paper."
+                    >
+              </div>
+              
+              <div class="item">
+                <img 
+                    src="./img/fanart/silentrunning.jpg" 
+                    alt="2D drunk with a chalice"
+                    data-title="Silent Running"
+                    data-description="Everything was going to be alright... or was it? Digital, Procreate."
+                    >
+              </div>
+                        
+              <div class="item">
+                <img 
+                    src="./img/fanart/maria-ark.jpg" 
+                    alt="Maria and Shadow on the ARK."
+                    data-title="The ARK"
+                    data-description="Maria and Shadow on the ARK. Digital, Procreate."
+                    >
+              </div>
+                        
+              <div class="item">
+                <img 
+                    src="./img/fanart/tails-cream.jpg" 
+                    alt="Tails and Cream picking flowers."
+                    data-title="Tails and Cream"
+                    data-description="Rough sketch of Tails and Cream picking flowers. Digital, Procreate."
+                    >
+              </div>
+            </div>
+
+            <div>
+              <h2>Original Works</h2>
+              <div class="gallerygrid">
+                <div class="item">
+                  <img 
+                      src="./img/originalart/merman.jpg" 
+                      alt="A merman swimming over a chasm."
+                      data-title="Mermay"
+                      data-description="A merman swimming over a deep trench. Digital, Procreate."
+                      >
+                </div>
+                
+                <div class="item">
+                  <img 
+                      src="./img/originalart/vaporwave.jpg" 
+                      alt="Vaporwave style cityscape"
+                      data-title="Vaporwave City"
+                      data-description="A vaporwave styled illustration of a cityscape. Digital, Adobe Illustrator."
+                      >
+                </div>
+                          
+                <div class="item">
+                  <img 
+                      src="./img/originalart/pride.png" 
+                      alt="A bunch of pride emoji"
+                      data-title="Pride Emoji"
+                      data-description="A collection of pride emoji for a variety of genders and sexualities. Digital, Adobe Illustrator."
+                      >
+                </div>
+              </div>
+
+          </div>
+
+        </div>
+      </section>
+    </main>
+    
+  <script src="script.js"></script>
+  <script>
+    $('img').on('mousedown', function(event) {
+  event.preventDefault();
+});
+
+  $('img').bind('contextmenu', function(e) {
+    return false;
+  }); 
+
+  function loadImg(src, alt, title, description){
+  $("#lightbox-bg").fadeIn();
+  $("#image-content").attr("src", src);
+  $("#image-content").attr("alt", alt);
+  $("#lightbox-title").text(title);
+  $("#lightbox-description").text(description);
+}
+
+
+$('.item').on('click', function(){
+  var src = $(this).find('img').attr('src');
+  var alt = $(this).find('img').attr('alt');
+  var title = $(this).find('img').attr('data-title');
+  var description = $(this).find('img').attr('data-description');
+  loadImg(src, alt, title, description);
+});
+
+
+  </script>
+</body>
+</html>
