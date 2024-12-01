@@ -13,19 +13,22 @@
 </head>
 <body>
   <div id="lightbox-bg"> 
-    <div class="lightbox-content box">
+    <div id="lightbox-content" class="lightbox-content box">
       <button class="delete is-large" onclick="$('#lightbox-bg').fadeOut()"></button> 
-      <figure class="image watermarked is-centered">
+      <div class="is-centered">
+        <figure class="image watermarked">
         <img 
         id="image-content"
         src="./img/placeholder.gif"
         alt="Placeholder Image. Sonic shrugging."
+        style="margin:auto;"
         >
-        
-        <h2 id="lightbox-title" class="title is-2">Title</h2>
+        </figure>
+        <h2 id="lightbox-title" class="title has-text-responsive">Title</h2>
         <p id="lightbox-description" class="subtitle">Subtitle</p>
-        <p><small>Do not copy.</small></p>
-      </figure>         
+        <p><small>Do not copy.</small></p> 
+      </div>
+              
       
         
     </div> 
@@ -157,6 +160,8 @@
 
   function loadImg(src, alt, title, description){
   $("#lightbox-bg").fadeIn();
+  $('#lightbox-bg').css('display', 'flex');
+
   $("#image-content").attr("src", src);
   $("#image-content").attr("alt", alt);
   $("#lightbox-title").text(title);
